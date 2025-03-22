@@ -3,6 +3,7 @@ from aiogram.filters import CommandStart, Command
 from aiogram.types import Message
 
 from app.keyboards.all_kb import main_kb, create_spec_kb
+from app.utils.utils import ABOUT_ME
 
 start_router = Router()
 
@@ -17,3 +18,8 @@ async def cmd_start_2(message: Message):
     await message.answer('Запуск сообщения по' + \
         ' комманде /start_2 используя фильтр CommandStart()',
         reply_markup=create_spec_kb())
+    
+    
+@start_router.message(F.text == "0 нас")
+async def print_about_me_message(message: Message):
+    await message.answer(ABOUT_ME)

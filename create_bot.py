@@ -15,4 +15,4 @@ ADMINS = os.getenv('ADMINS')
 admins = [int(admin_id) for admin_id in ADMINS.split(',')]
 bot = Bot(token=BOT_TOKEN,
           default=DefaultBotProperties(parse_mode=ParseMode.HTML))
-dp = DefaultBotProperties(storage=MemoryStorage( ))
+dp = Dispatcher(storage=MemoryStorage( ))

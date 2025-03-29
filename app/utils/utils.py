@@ -1,4 +1,5 @@
 import datetime
+from create_bot import ADMINS
 
 ABOUT_ME = """Скачат абаи клыщ рыил
 
@@ -20,3 +21,8 @@ def create_profile_message(user: dict):
 
 У вас на балансе: {user["baance"]} руб.
     """
+    if user["id"] in ADMINS:
+            USER_MESSAGE += """
+            
+Вы обладаете правами администратора!"""
+    return USER_MESSAGE

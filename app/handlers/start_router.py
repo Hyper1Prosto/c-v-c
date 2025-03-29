@@ -5,6 +5,7 @@ from aiogram.types import Message
 from app.keyboards.all_kb import main_kb, create_spec_kb
 from app.utils.utils import ABOUT_ME
 
+
 start_router = Router()
 
 @start_router.message(CommandStart())
@@ -20,6 +21,6 @@ async def cmd_start_2(message: Message):
         reply_markup=create_spec_kb())
     
     
-@start_router.message(F.text == "0 нас")
+@start_router.message(F.text == "О нас")
 async def print_about_me_message(message: Message):
     await message.answer(ABOUT_ME)

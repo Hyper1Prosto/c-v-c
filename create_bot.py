@@ -1,4 +1,5 @@
 import os
+import sqlite3
 
 from aiogram import Bot, Dispatcher
 from aiogram.client.default import DefaultBotProperties
@@ -6,6 +7,7 @@ from aiogram.enums import ParseMode
 from aiogram.fsm.storage.memory import MemoryStorage
 
 from dotenv import load_dotenv
+from app.db_hendler.db_class import create_connection
 
 load_dotenv()
 
@@ -16,3 +18,26 @@ admins = [int(admin_id) for admin_id in ADMINS.split(',')]
 bot = Bot(token=BOT_TOKEN,
           default=DefaultBotProperties(parse_mode=ParseMode.HTML))
 dp = Dispatcher(storage=MemoryStorage( ))
+
+
+
+
+
+def create_tables():
+    conn = create_connection()
+    cursor = conn.cursor()
+    
+    cursor.execute("""
+CREATE TABLE IF NOT EXISTS users
+(
+    id INTEGER PRIMARY KEY,
+    user_id INTEGER,
+    full_name TEXT,
+    req_date TEXT
+)
+""")
+    
+    conn.commit()
+    conn.close()
+    
+create_tables()

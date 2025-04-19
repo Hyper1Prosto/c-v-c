@@ -1,12 +1,11 @@
-from python:3.11-alpha
+FROM --platform=arm64 python:3.13-alpine
 
-#работа папки 
 WORKDIR /app
 
-#копируем зависимости
 COPY req.txt .
 
-RUN pip install --no--cache-dir -r req.txt
+RUN pip install --no-cache-dir -r req.txt
 
 COPY . .
+
 CMD ["python3", "main.py"]

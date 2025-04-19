@@ -7,7 +7,7 @@ from aiogram.enums import ParseMode
 from aiogram.fsm.storage.memory import MemoryStorage
 
 from dotenv import load_dotenv
-from app.db_hendler.db_class import create_connection
+from app.db_handler.db_class import create_connection
 
 load_dotenv()
 

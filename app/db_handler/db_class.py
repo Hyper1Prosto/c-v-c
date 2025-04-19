@@ -38,4 +38,14 @@ full_name, balance, create_at, update_at)
     conn.commit()
     return True
 
-create_user(1, "p1n0k10")
+def get_user (user_id: int) -> object:
+    conn = create_connection()
+    cursor.execute(find_user,(user_id))
+    user = cursor.fethone()
+    print (user)
+    conn.commit()
+    
+    return user
+
+if __name__ == "__main__":
+    create_user(1, "p1n0k10")

@@ -13,16 +13,13 @@ ABOUT_ME = """Скачат абаи клыщ рыил
 Последнее обновление: 22 марта 2025 года
 """
 
-def create_profile_message(user: dict):
+def create_profile_message(user: tuple):
+    USER_MESSAGE = "Тестовый текст"
     if user:
-        USER_MESSAGE = f"""привет, {user['name']}!
-        
-Сейчас: {datetime.datetime.now().strftime("%d/%m/%Y, %H:%M:%S")}
+        USER_MESSAGE = f"""Привет, {user[2]}! 🥋
 
-У вас на балансе: {user["baance"]} руб.
+Сейчас: {datetime.datetime.now().strftime("%d/%m/%Y, %H:%M:%S")} ⏳
+
+У вас на балансе: {user[3]} руб 💵
     """
-    if user["id"] in ADMINS:
-            USER_MESSAGE += """
-            
-Вы обладаете правами администратора!"""
     return USER_MESSAGE

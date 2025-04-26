@@ -3,21 +3,22 @@ version: '3.8'
 services:
   bot:
     build: .
-    container_name: te;egram_bot
+    container_name: telegram_bot
     restart: unless-stopped
     env_file: .env
-    depends_on:  
+    depends_on:
       - db
+    volumes:
+      - ./database.db:/app/database.db
   db:
     image: postgres:13-alpine
     container_name: bot_db
     restart: unless-stopped
     env_file: .env
-    volume:
-      - postgress_data:/var/lib/postgresql/data
-  ports:
-    - "5432:5432"
+    volumes: 
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
 
 volumes:
   postgres_data:
-
